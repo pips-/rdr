@@ -1,0 +1,20 @@
+{
+  "name": "rdr",
+  "version": "1.0.0",
+  "description": "print web article as plain text",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"ZOMG! Error: no test specified\" && exit 1"
+  },
+  "author": "tx",
+  "license": "MIT",
+  "dependencies": {
+    "article-parser": "^1.6.12",
+    "html-to-text": "^3.2.0",
+    "optimist": "^0.6.1",
+    "yargs": "^6.6.0"
+  },
+  "bin": {
+    "rdr": "index.js"
+  }
+}
