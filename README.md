@@ -21,9 +21,8 @@ rdr requires node and npm (yeah well, sorry)
 	  -V, --version   Show version number                                  [boolean]
 
 	Examples:
-	  rdr https://example.org
+	  rdr https://example.org |less
 	  rdr -u  https://example.org > toread.txt
-	  rdr https://github.com/trqx/rdr |less
 	  echo htts://example.org |rdr -p
 
 # acknowledgments

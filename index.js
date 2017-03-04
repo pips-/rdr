@@ -5,9 +5,8 @@ var articleParser = require('article-parser')
 var yargs = require('yargs')
 	.usage('Usage: $0 URL')
 
-	.example('$0 https://example.org')
+	.example('$0 https://example.org |less')
 	.example('$0 -u  https://example.org > toread.txt')
-	.example('$0 https://github.com/trqx/rdr |less')
 	.example('echo htts://example.org |rdr -p')
 
 	.help()
