@@ -8,6 +8,7 @@ var yargs = require('yargs')
 	.example('$0 https://example.org')
 	.example('$0 -u  https://example.org > toread.txt')
 	.example('$0 https://github.com/trqx/rdr |less')
+	.example('echo htts://example.org |rdr -p')
 
 	.help()
 	.alias('h', 'help')
