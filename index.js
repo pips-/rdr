@@ -19,13 +19,15 @@ var yargs = require('yargs')
 	.boolean('pipe')
 	.alias('p', 'pipe')
 	.describe('p', 'read url from stdin')
+	.version()
+	.alias('V', 'version')
 
 var argv = yargs.argv
 
 var url = ''
 
-// handle stdin input
 if (argv.p) {
+	// stdin input
 	rl = readline.createInterface({
 		input: process.stdin
 	})
