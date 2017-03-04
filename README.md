@@ -6,7 +6,7 @@ rdr - get plain text content of web page
 
 rdr requires node and npm (yeah well, sorry)
 
-	git clone https://github.com/trx/rdr
+	git clone https://github.com/trqx/rdr
 	cd rdr
 	sudo npm install -g .
 
