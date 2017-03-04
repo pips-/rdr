@@ -1,5 +1,7 @@
 rdr - get plain text content of web page
 
+[![asciicast](https://asciinema.org/a/8rtrx7hn4jv3ybkpg4wj1xrtz.png)](https://asciinema.org/a/8rtrx7hn4jv3ybkpg4wj1xrtz)
+
 # installation
 
 rdr requires node and npm (yeah well, sorry)
