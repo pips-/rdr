@@ -1,23 +1,57 @@
 #!/usr/bin/env node
+var readline = require('readline');
 var html2txt = require('html-to-text')
 var articleParser = require('article-parser')
-var argv = require('yargs')
-	.demandCommand(1, 1, 'URL required', 'only 1 URL allowed')
+var yargs = require('yargs')
 	.usage('Usage: $0 URL')
-	.string('url')
+
 	.example('$0 https://example.org')
-	.example('$0 https://example.org |less')
-	.alias('h', 'help')
+	.example('$0 -u  https://example.org > toread.txt')
+	.example('$0 https://github.com/trqx/rdr |less')
+
 	.help()
-	.argv
+	.alias('h', 'help')
 
-var url = argv._[0]
+	.boolean('show-url')
+	.alias('u', 'show-url')
+	.describe('u', 'output the URL at the top')
 
-articleParser.extract(url).then((article) => {
-	content = html2txt.fromString(article.content)
-	console.log(article.title + '\n')
-	console.log(content)
-}).catch(function(error) {
-	console.error(error.message)
-	process.exit(1)
-})
+	.boolean('pipe')
+	.alias('p', 'pipe')
+	.describe('p', 'read url from stdin')
+
+var argv = yargs.argv
+
+var url = ''
+
+// handle stdin input
+if (argv.p) {
+	rl = readline.createInterface({
+		input: process.stdin
+	})
+	rl.on('line', (line) => {
+		fetch(line, argv.u)
+	})
+} else {
+	// url as option
+	if (argv._.length != 1) {
+		yargs.showHelp()
+		process.exit(1)
+	}
+	fetch(argv._[0], argv.u)
+
+}
+
+function fetch(url, showurl) {
+	// fetch the content
+	articleParser.extract(url).then((article) => {
+		if (showurl) {
+			console.log(url + '\n')
+		}
+		console.log(article.title + '\n')
+		console.log(html2txt.fromString(article.content))
+	}).catch(function(error) {
+		console.error(error.message)
+		process.exit(1)
+	})
+}
